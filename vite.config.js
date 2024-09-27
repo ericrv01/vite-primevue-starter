@@ -14,6 +14,7 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import vueI18n from '@intlify/unplugin-vue-i18n/vite'
 import pkg from './package.json'
+import {fileURLToPath, URL} from "node:url";
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -38,8 +39,9 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ['test/**/*.test.ts'],
+    include: ['test/**/*.test.ts', 'src/**/*.spec.ts'],
     environment: 'happy-dom',
+    setupFiles: ['test/vitestSetup.ts'],
   },
 
   optimizeDeps: {
@@ -149,6 +151,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '~': path.resolve(__dirname, 'node_modules/'),
+      '@test': fileURLToPath(new URL('./test', import.meta.url))
     },
   },
 

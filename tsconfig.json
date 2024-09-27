@@ -37,7 +37,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "auto-imports.d.ts",
-    "components.d.ts"
+    "components.d.ts",
+    "test/utils.ts"
   ],
   "exclude": ["dist", "node_modules", "cypress"]
 }
