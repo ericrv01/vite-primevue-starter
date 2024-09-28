@@ -22,10 +22,12 @@
       "@intlify/vite-plugin-vue-i18n/client",
       "vitest",
       "vitest/global",
+      "@testing-library/jest-dom"
 
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@test/*": ["./test/*"],
       "tslib" : ["./node_modules/tslib/tslib.d.ts"]
     }
 
@@ -38,7 +40,9 @@
     "src/**/*.vue",
     "auto-imports.d.ts",
     "components.d.ts",
-    "test/utils.ts"
+    "test/utils.ts",
+    // "test/setupTests.d.ts"
   ],
-  "exclude": ["dist", "node_modules", "cypress"]
+  "exclude": ["dist", "node_modules", "cypress"],
+  "types": ["vitest"]
 }

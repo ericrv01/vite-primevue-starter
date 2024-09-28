@@ -1,10 +1,17 @@
-import { afterEach } from 'vitest';
-import '@testing-library/jest-dom/vitest';
+console.log('vitestSetup.ts has been executed');
+import { consola } from "consola"
 
-import * as matchers from '@testing-library/jest-dom/matchers';
-expect.extend(matchers);
+import { afterEach, expect } from 'vitest'
+import '@testing-library/jest-dom/vitest'
+import '@testing-library/jest-dom'
+
+console.log('vitestSetup.ts has been executed');
+consola.info("VitestSetup.ts a démarré")
+import * as matchers from '@testing-library/jest-dom/matchers'
+
+expect.extend(matchers)
 
 afterEach(() => {
-    localStorage.clear();
-    sessionStorage.clear();
-});
+  localStorage.clear()
+  sessionStorage.clear()
+})

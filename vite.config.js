@@ -41,7 +41,7 @@ export default defineConfig({
     globals: true,
     include: ['test/**/*.test.ts', 'src/**/*.spec.ts'],
     environment: 'happy-dom',
-    setupFiles: ['test/vitestSetup.ts'],
+    setupFiles: ['./test/vitestSetup.ts'],
   },
 
   optimizeDeps: {
