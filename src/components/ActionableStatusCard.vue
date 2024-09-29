@@ -12,7 +12,7 @@
       <InputSwitch
           v-model="checked"
           :disabled="!isActivable"
-          class="switch"
+          class="switch custom-switch"
       />
       <span class="status-label">Marche</span>
     </div>

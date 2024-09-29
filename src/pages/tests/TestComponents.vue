@@ -31,7 +31,7 @@
       <ActionableStatus title="Status 3" :status="true" :is-activable="true"/>
     </div>
     <div class="basis-1/4 little-card">
-      <StatisticCard title="Nbr. Jobs terminés" :number="637484"/>
+      <StatisticCard title="Nbr. Jobs actifs" :number="84"/>
     </div>
   </div>
 

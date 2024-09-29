@@ -9,6 +9,10 @@ const props = defineProps({
     type: Number,
     required: true, // La prop `title` est obligatoire
   },
+  styleClass: {
+    type: String,
+    default: 'style-blue', // Style par défaut
+  },
 })
 consola.info(props.number)
 </script>
@@ -18,7 +22,7 @@ consola.info(props.number)
 
     <!-- Titre de la card -->
     <template #title>{{ props.title }}</template>
-    <template #content>{{ props.number}}
+    <template #content><p class="m-0">{{ props.number}}</p>
     </template>
   </Card>
   </template>
@@ -26,9 +30,11 @@ consola.info(props.number)
 
 <style scoped>
 .statistic-card {
-  background-color: #3CB371;
+  //background-color: #3CB371;
+  padding: 10px; /* Ajoutez plus d'espace autour du contenu */
+  background: linear-gradient(135deg, #4f86ed 0%, #61dafb 100%); /* Dégradé bleu */
   //margin: 4px;
-  border-radius: 8px;
+  border-radius: 16px;
   height: 100%;
   min-height: 150px; /* Ajustez selon vos besoins */
   //min-width: 250px; /* Ajustez selon vos besoins */
@@ -37,12 +43,25 @@ consola.info(props.number)
   //justify-content: center;
   //align-items: center;
 }
-/* Style pour le titre */
-:deep(.p-card-title)  {
-  color: black;
-  font-size: 1.5rem; /* Taille du texte plus grande */
-  font-weight: bold; /* Texte en gras */
+
+.statistic-card:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
 }
+
+
+/* Style pour le titre */
+/*:deep(.p-card-title)  {
+  color: black;
+  font-size: 1.5rem; !* Taille du texte plus grande *!
+  font-weight: bold; !* Texte en gras *!
+}*/
+
+:deep(.p-card-title) {
+  text-align: center;
+}
+
 
 /* Style pour le nombre */
 :deep(.p-card-content)  {
@@ -63,6 +82,10 @@ consola.info(props.number)
 .bg-off {
   background-color: #d3d3d3;
 }
+
+
+
+
 
 
 </style>
