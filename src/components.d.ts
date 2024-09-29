@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionableStatus: typeof import('./components/ActionableStatus.vue')['default']
+    ActionableStatusCard: typeof import('./components/ActionableStatusCard.vue')['default']
     AdvertiseBox: typeof import('./components/AdvertiseBox.vue')['default']
     AppFooter: typeof import('./components/app/AppFooter.vue')['default']
     AppMenu: typeof import('./components/app/AppMenu.vue')['default']
@@ -17,5 +19,6 @@ declare module 'vue' {
     Hello: typeof import('./components/basic/Hello.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    StatisticCard: typeof import('./components/StatisticCard.vue')['default']
   }
 }

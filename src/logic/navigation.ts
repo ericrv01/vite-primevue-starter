@@ -6,6 +6,12 @@ export const navigationMenu = [
     }],
   },
   {
+    label: 'Tests',
+    items: [{
+      label: 'Tests', icon: 'pi pi-fw pi-home', to: '/tests/TestComponents',
+    }],
+  },
+  {
     label: 'PrimeVue',
     icon: 'pi pi-fw pi-clone',
     items: [

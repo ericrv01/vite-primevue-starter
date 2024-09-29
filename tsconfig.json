@@ -34,13 +34,14 @@
   },
   "include": [
     "src/**/*.ts",
+    "/mocks/**/*.js",
     "cypress/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "auto-imports.d.ts",
     "components.d.ts",
-    "test/utils.ts",
+    "test/ORIG_utils.ts"
     // "test/setupTests.d.ts"
   ],
   "exclude": ["dist", "node_modules", "cypress"],

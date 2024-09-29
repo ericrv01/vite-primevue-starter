@@ -1,16 +1,18 @@
-import { beforeEach, describe, expect, fireEvent, it, screen, setup } from '@test/utils'
-// import '@testing-library/jest-dom'
+import { beforeEach, describe, expect, it, screen, setup } from '@test/ORIG_utils'
 import Hello from '@/components/basic/Hello.vue'
 
 describe('Hello.vue', () => {
+  let user: ReturnType<typeof setup>['user'];
+
   beforeEach(() => {
-    setup(Hello, {
+    const setupResult = setup(Hello, {
       renderOptions: {
         props: {
           count: 3,
         },
       },
     })
+    user = setupResult.user;
   })
 
   it('renders correctly with initial props', () => {
@@ -20,7 +22,9 @@ describe('Hello.vue', () => {
 
   it('increments times when button is clicked', async () => {
     const button = screen.getByText('x1')
-    await fireEvent.click(button)
+    await user.click(button);
+    // await fireEvent.click(button)
+
     expect(screen.getByText('3 x 3 = 9')).toBeTruthy()
   })
 })

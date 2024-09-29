@@ -1,17 +1,16 @@
-console.log('vitestSetup.ts has been executed');
-import { consola } from "consola"
-
-import { afterEach, expect } from 'vitest'
+import { afterAll, afterEach, beforeAll, expect } from 'vitest'
 import '@testing-library/jest-dom/vitest'
 import '@testing-library/jest-dom'
+import { mockServer } from './ORIG_utils';
 
-console.log('vitestSetup.ts has been executed');
-consola.info("VitestSetup.ts a démarré")
 import * as matchers from '@testing-library/jest-dom/matchers'
-
 expect.extend(matchers)
 
+beforeAll(() => mockServer.listen({ onUnhandledRequest: `error` }));
+afterAll(() => mockServer.close());
+
 afterEach(() => {
+  mockServer.resetHandlers();
   localStorage.clear()
   sessionStorage.clear()
 })
