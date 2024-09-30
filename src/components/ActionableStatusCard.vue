@@ -1,28 +1,5 @@
-<template>
-  <Card data-testid="actionable-status" class="automation-status-card"
-        :class="{ 'bg-on': checked, 'bg-off': !checked }">
-
-    <!-- Titre de la card -->
-    <template #title>{{ title }}</template>
-    <template #content>
-
-    <!-- Contenu principal de la card -->
-    <div class="switch-container">
-      <span class="status-label">Arrêt</span>
-      <InputSwitch
-          v-model="checked"
-          :disabled="!isActivable"
-          class="switch custom-switch"
-      />
-      <span class="status-label">Marche</span>
-    </div>
-    </template>
-  </Card>
-
-</template>
-
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue'
 
 const props = defineProps({
   isActivable: {
@@ -39,20 +16,41 @@ const props = defineProps({
   },
 })
 
-const checked = ref(props.status);
-const emit = defineEmits(['status-changed']);
-
-
+const emit = defineEmits(['status-changed'])
+const checked = ref(props.status)
 // Watch pour réagir aux changements de `status`
 watch(() => props.status, (newValue) => {
-  checked.value = newValue;
-});
+  checked.value = newValue
+})
 
 watch(checked, (newValue) => {
-  emit('status-changed', newValue);
-});
-
+  emit('status-changed', newValue)
+})
 </script>
+
+<template>
+  <Card
+    data-testid="actionable-status" class="automation-status-card"
+    :class="{ 'bg-on': checked, 'bg-off': !checked }"
+  >
+    <!-- Titre de la card -->
+    <template #title>
+      {{ title }}
+    </template>
+    <template #content>
+      <!-- Contenu principal de la card -->
+      <div class="switch-container">
+        <span class="status-label">Arrêt</span>
+        <InputSwitch
+          v-model="checked"
+          :disabled="!isActivable"
+          class="switch custom-switch"
+        />
+        <span class="status-label">Marche</span>
+      </div>
+    </template>
+  </Card>
+</template>
 
 <style scoped>
 .automation-status-card {
@@ -100,6 +98,4 @@ watch(checked, (newValue) => {
 .switch {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
-
-
 </style>

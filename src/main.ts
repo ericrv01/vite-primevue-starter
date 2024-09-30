@@ -7,6 +7,8 @@ import 'uno.css'
 import '@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss'
 import type { UserModule } from '@/types'
 
+import '@/assets/css/primevue-custom.css'; // CSS personnalisé, pour les Toasts illisibles dans certains thèmes.
+
 const routes = setupLayouts(generatedRoutes)
 
 export const createApp = ViteSSG(

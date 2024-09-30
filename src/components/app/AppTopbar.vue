@@ -107,7 +107,6 @@ function onTopbarMenuToggle(event: any) {
         />
         <label>Aura Light</label>
       </div>
-
       <h6>Primary Color</h6>
       <div class="flex">
         <div

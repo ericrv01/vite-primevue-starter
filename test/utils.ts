@@ -6,6 +6,7 @@ import PrimeVue from 'primevue/config';
 import ToggleButton from 'primevue/togglebutton';
 import InputSwitch from 'primevue/inputswitch';
 import Card from 'primevue/card';
+import Button from "primevue/button";
 
 export { screen, fireEvent } from '@testing-library/vue';
 export { expect, it, beforeEach, describe } from 'vitest';
@@ -25,7 +26,7 @@ export const setup = (
                 components: {
                     ToggleButton,
                     InputSwitch,
-                    Card
+                    Card, Button
 
                 },
             },
