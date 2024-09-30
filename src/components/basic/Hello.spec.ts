@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, screen, setup } from '@test/ORIG_utils'
+import { beforeEach, describe, expect, it, screen, setup } from '@test/utils'
 import Hello from '@/components/basic/Hello.vue'
 
 describe('Hello.vue', () => {

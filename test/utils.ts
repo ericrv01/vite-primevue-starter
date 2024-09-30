@@ -1,36 +1,36 @@
-import userEvent from '@testing-library/user-event';
-import { render, type RenderOptions, type RenderResult } from '@testing-library/vue';
-import type { Component } from 'vue';
+import userEvent from '@testing-library/user-event'
+import { type RenderOptions, type RenderResult, render } from '@testing-library/vue'
+import type { Component } from 'vue'
 
-import PrimeVue from 'primevue/config';
-import ToggleButton from 'primevue/togglebutton';
-import InputSwitch from 'primevue/inputswitch';
-import Card from 'primevue/card';
-import Button from "primevue/button";
+import PrimeVue from 'primevue/config'
+import ToggleButton from 'primevue/togglebutton'
+import InputSwitch from 'primevue/inputswitch'
+import Card from 'primevue/card'
+import Button from 'primevue/button'
 
-export { screen, fireEvent } from '@testing-library/vue';
-export { expect, it, beforeEach, describe } from 'vitest';
-export { mockServer } from './mock-server';
+import ToastService from 'primevue/toastservice'
 
-type SetupReturn = RenderResult & { user: ReturnType<typeof userEvent.setup> };
+export { screen, fireEvent } from '@testing-library/vue'
+export { expect, it, beforeEach, describe } from 'vitest'
+export { mockServer } from '@/mocks/common/node'
 
-export const setup = (
-    component: Component,
-    { renderOptions }: { renderOptions?: RenderOptions<Component> } = {},
-): SetupReturn => {
-    return {
-        user: userEvent.setup(),
-        ...render(component, {
-            global: {
-                plugins: [PrimeVue],
-                components: {
-                    ToggleButton,
-                    InputSwitch,
-                    Card, Button
 
-                },
-            },
-            ...renderOptions,
-        }),
-    };
-};
+type SetupReturn = RenderResult & { user: ReturnType<typeof userEvent.setup> }
+
+export function setup(component: Component, { renderOptions }: { renderOptions?: RenderOptions<Component> } = {}): SetupReturn {
+  return {
+    user: userEvent.setup(),
+    ...render(component, {
+      global: {
+        plugins: [PrimeVue, ToastService],
+        components: {
+          ToggleButton,
+          InputSwitch,
+          Card,
+          Button,
+        },
+      },
+      ...renderOptions,
+    }),
+  }
+}
