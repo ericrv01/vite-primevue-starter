@@ -18,74 +18,84 @@ consola.info(props.number)
 </script>
 
 <template>
-  <Card data-testid="statistic-card" class="statistic-card">
+  <Card data-testid="statistic-card" :class="['statistic-card', styleClass]">
 
     <!-- Titre de la card -->
-    <template #title>{{ props.title }}</template>
-    <template #content><p class="m-0">{{ props.number}}</p>
+    <template #title>
+      <div class="card-title">{{ props.title }}</div>
+    </template>
+    <template #content>
+      <p class="m-0">{{ props.number}}</p>
     </template>
   </Card>
   </template>
 
 
 <style scoped>
+
+/* Styles de base de la carte */
 .statistic-card {
-  //background-color: #3CB371;
-  padding: 10px; /* Ajoutez plus d'espace autour du contenu */
-  background: linear-gradient(135deg, #4f86ed 0%, #61dafb 100%); /* Dégradé bleu */
-  //margin: 4px;
+  padding: 10px;
   border-radius: 16px;
   height: 100%;
-  min-height: 150px; /* Ajustez selon vos besoins */
-  //min-width: 250px; /* Ajustez selon vos besoins */
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: center;
-  //align-items: center;
-}
-
-.statistic-card:hover {
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
+  min-height: 150px;
   transition: all 0.3s ease;
 }
 
-
-/* Style pour le titre */
-/*:deep(.p-card-title)  {
-  color: black;
-  font-size: 1.5rem; !* Taille du texte plus grande *!
-  font-weight: bold; !* Texte en gras *!
-}*/
-
-:deep(.p-card-title) {
-  text-align: center;
+/* Effet de survol */
+.statistic-card:hover {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
 
+/* Différents styles de cartes */
+.style-blue {
+  background: linear-gradient(135deg, #4f86ed 0%, #61dafb 100%);
+  color: #ffffff;
+}
+
+.style-orange {
+  background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+  color: #ffffff;
+}
+
+.style-green {
+  background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+  color: #ffffff;
+}
+
+/* Personnalisation des titres pour chaque style */
+.style-blue .card-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.style-orange .card-title {
+  color: #FFD700; /* Or */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.style-green .card-title {
+  color: #A7F3D0; /* Vert clair */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Style pour le nombre */
-:deep(.p-card-content)  {
+:deep(.p-card-content) {
   color: black;
-  font-size: 3rem; /* Taille du texte plus grande */
-  font-weight: bold; /* Texte en gras */
+  font-size: 3rem;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-/* Couleurs de fond dynamique */
-.bg-on {
-  background-color: #3CB371;
-}
-
-.bg-off {
-  background-color: #d3d3d3;
-}
-
-
-
-
-
 
 </style>

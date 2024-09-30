@@ -19,6 +19,8 @@ declare module 'vue' {
     Hello: typeof import('./components/basic/Hello.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    StartStopButton: typeof import('./components/StartStopButton.vue')['default']
+    StartStopButton2: typeof import('./components/StartStopButton2.vue')['default']
     StatisticCard: typeof import('./components/StatisticCard.vue')['default']
   }
 }
