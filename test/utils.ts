@@ -7,17 +7,21 @@ import ToggleButton from 'primevue/togglebutton'
 import InputSwitch from 'primevue/inputswitch'
 import Card from 'primevue/card'
 import Button from 'primevue/button'
-
 import ToastService from 'primevue/toastservice'
+import StartStopButton from '@/components/StartStopButton.vue'
+
+// export {mockServer} from '@/mocks/common/node'
+// import { mockServer } from '@/mocks/common/node'
 
 export { screen, fireEvent } from '@testing-library/vue'
-export { expect, it, beforeEach, describe } from 'vitest'
-export { mockServer } from '@/mocks/common/node'
-
+export { expect, it, beforeEach, describe, afterEach } from 'vitest'
+// export mockServer
 
 type SetupReturn = RenderResult & { user: ReturnType<typeof userEvent.setup> }
 
-export function setup(component: Component, { renderOptions }: { renderOptions?: RenderOptions<Component> } = {}): SetupReturn {
+export function setup(component: Component, { renderOptions }: {
+  renderOptions?: RenderOptions<Component>
+} = {}): SetupReturn {
   return {
     user: userEvent.setup(),
     ...render(component, {
@@ -28,6 +32,7 @@ export function setup(component: Component, { renderOptions }: { renderOptions?:
           InputSwitch,
           Card,
           Button,
+          StartStopButton,
         },
       },
       ...renderOptions,

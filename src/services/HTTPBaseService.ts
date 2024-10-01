@@ -1,18 +1,20 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import { consola } from 'consola'
-import { useToast } from 'primevue/usetoast'
+// import { useToast } from 'primevue/usetoast'
+import * as toast from '@/composables/toast'
 
 // Create Axios instance
 const apiClient: AxiosInstance = axios.create({
-  baseURL: '/',
+  baseURL: 'http://localhost:3000/api/v1/',
   timeout: 25000,
   headers: {
     'Content-type': 'application/json',
+    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiMSIsImlzQWRtaW4iOnRydWUsImlzV3JpdGVyIjpmYWxzZSwiaXNSZWFkZXIiOmZhbHNlfSwiaWF0IjoxNjgxMTQ5NzUzfQ.8LeCQlrjpICRsMH2AS_Pvyd6vzUqqEEwaX8AdgUqpJI`,
   },
 })
 
-const toast = useToast()
+// const toast = useToast()
 
 /* // Check if the request is for login
 function isLoginRequest(request: InternalAxiosRequestConfig): boolean {
@@ -63,12 +65,7 @@ const errorMessages: ErrorMessagesType = {
 
 // Fonction d'utilité pour afficher les toasts
 function showToastError(detail: string) {
-  toast.add({
-    severity: 'error',
-    summary: 'Error',
-    detail,
-    life: 3000,
-  })
+  toast.error('Error', detail, 3000)
 }
 
 // Response interceptor

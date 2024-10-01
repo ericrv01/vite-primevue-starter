@@ -15,6 +15,7 @@ declare module 'vue' {
     AppProfile: typeof import('./components/app/AppProfile.vue')['default']
     AppSubmenu: typeof import('./components/app/AppSubmenu.vue')['default']
     AppTopbar: typeof import('./components/app/AppTopbar.vue')['default']
+    AutomationStatus: typeof import('./components/AutomationStatus.vue')['default']
     Foo: typeof import('./components/basic/Foo.vue')['default']
     Hello: typeof import('./components/basic/Hello.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

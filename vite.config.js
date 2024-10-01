@@ -1,4 +1,5 @@
 import * as path from 'node:path'
+import { URL, fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Markdown from 'unplugin-vue-markdown/vite'
@@ -14,7 +15,6 @@ import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
 import vueI18n from '@intlify/unplugin-vue-i18n/vite'
 import pkg from './package.json'
-import {fileURLToPath, URL} from "node:url";
 
 const markdownWrapperClasses = 'prose prose-sm m-auto text-left'
 
@@ -151,7 +151,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '~': path.resolve(__dirname, 'node_modules/'),
-      '@test': fileURLToPath(new URL('./test', import.meta.url))
+      '@test': fileURLToPath(new URL('./test', import.meta.url)),
     },
   },
 

@@ -22,6 +22,7 @@ useHead({
 
 <template>
   <div id="bar" />
+  <Toast />
   <router-view />
 </template>
 

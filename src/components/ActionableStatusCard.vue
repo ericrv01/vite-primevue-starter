@@ -63,8 +63,9 @@ watch(checked, (newValue) => {
   //min-width: 250px; /* Ajustez selon vos besoins */
 
 }
+
 /* Style pour le titre */
-:deep(.p-card-title)  {
+:deep(.p-card-title) {
   color: black;
   font-size: 1.5rem; /* Taille du texte plus grande */
   font-weight: bold; /* Texte en gras */

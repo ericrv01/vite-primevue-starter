@@ -8,15 +8,30 @@ import '@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss'
 import type { UserModule } from '@/types'
 import '@/assets/css/primevue-custom.css' // CSS personnalisé, pour les Toasts illisibles dans certains thèmes.
 
+async function prepareApp() {
+  const { worker } = await import('@/mocks/common/browser')
+  return worker.start()
+}
+
 const routes = setupLayouts(generatedRoutes)
 
-export const createApp = ViteSSG(
+prepareApp().then(() => {
+  ViteSSG(
+    App,
+    { routes },
+    (ctx) => {
+      // install all modules under `modules/`
+      Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
+        .forEach(i => i.install?.(ctx))
+    },
+  )
+})
+/* export const createApp = ViteSSG(
   App,
   { routes },
   (ctx) => {
     // install all modules under `modules/`
-    Object.values(import.meta.glob<{ install: UserModule }>('./modules/*.ts', { eager: true }))
+    Object.values(import.meta.glob<{ install: UserModule }>('./modules/!*.ts', { eager: true }))
       .forEach(i => i.install?.(ctx))
   },
-
-)
+) */

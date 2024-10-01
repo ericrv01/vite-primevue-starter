@@ -1,52 +1,46 @@
+<script lang="ts">
+import { defineComponent, ref, watch } from 'vue'
 
-<script setup lang="ts">
-import { ref, defineProps, watch, defineEmits } from 'vue';
-
-// Définir les propriétés
-const props = defineProps({
-  isRunning: {
-    type: Boolean,
-    required: true
+export default defineComponent({
+  name: 'StartStopButton',
+  props: {
+    isRunning: {
+      type: Boolean,
+      required: true,
+    },
+    isAllowed: {
+      type: Boolean,
+      required: true,
+    },
   },
-  isAllowed: {
-    type: Boolean,
-    required: true
-  }
-});
+  emits: ['status-changed'],
+  setup(props, { emit }) {
+    // Fonction pour basculer l'état du système
+    function toggleState() {
+      if (props.isAllowed)
+        emit('status-changed', !props.isRunning)
+    }
 
-// Définir les événements
-const emit = defineEmits(['status-changed']);
-
-// État local pour isRunning
-const localIsRunning = ref(props.isRunning);
-
-// Mettre à jour l'état local lorsque la prop change
-watch(() => props.isRunning, (newVal) => {
-  localIsRunning.value = newVal;
-});
-
-// Fonction pour basculer l'état du système
-const toggleState = () => {
-  if (props.isAllowed) {
-    localIsRunning.value = !localIsRunning.value;
-    emit('status-changed', localIsRunning.value);
-  }
-};
+    return {
+      toggleState,
+    }
+  },
+})
 </script>
 
 <template>
   <div class="system-card">
     <!-- Indicateur d'état du système -->
-    <div :class="['status-indicator', localIsRunning ? 'running' : 'stopped']">
-      <span>{{ localIsRunning ? 'Automatisation active' : 'Automatisation arrêtée' }}</span>
+    <div class="status-indicator" :class="[isRunning ? 'running' : 'stopped']">
+      <span>{{ isRunning ? 'Automatisation active' : 'Automatisation arrêtée' }}</span>
     </div>
 
     <!-- Bouton de contrôle circulaire -->
     <Button
-        :label="localIsRunning ? 'STOP' : 'START'"
-        :class="['circular-button', localIsRunning ? 'stop' : 'start']"
-        @click="toggleState"
-        :disabled="!props.isAllowed"
+      :label="isRunning ? 'STOP' : 'START'"
+      class="circular-button" :class="[isRunning ? 'stop' : 'start']"
+      :disabled="!isAllowed"
+      @click="toggleState"
     />
   </div>
 </template>
