@@ -43,4 +43,7 @@ LOCAL_NOTES.md
 .vite-ssg-temp
 
 .yalc
-
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
