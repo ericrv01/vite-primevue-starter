@@ -1,6 +1,6 @@
-import { describe, expect, it } from '@test/utils'
-import { toastEmitSpy } from '@test/vitestSetup' // Importer `toastAddSpy`
-import apiClient from '@/services/HTTPBaseService'
+import {describe, expect, it} from '../utils'
+import {toastEmitSpy} from '../vitestSetup' // Importer `toastAddSpy`
+import apiClient from '../../src/services/HTTPBaseService'
 
 describe('HTTPBaseService', () => {
   it('should handle a successful response', async () => {
@@ -16,13 +16,13 @@ describe('HTTPBaseService', () => {
 
     // Vérifier que `toast.add` a été appelé avec les bons paramètres
     expect(toastEmitSpy).toHaveBeenCalledWith(
-      'add',
-      {
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Unauthorized: Your session has expired, please log in.',
-        life: 3000,
-      },
+        'add',
+        {
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Unauthorized: Your session has expired, please log in.',
+          life: 3000,
+        },
     )
   })
 
@@ -34,13 +34,13 @@ describe('HTTPBaseService', () => {
 
     // Vérifier que `toast.add` a été appelé avec les bons paramètres
     expect(toastEmitSpy).toHaveBeenCalledWith(
-      'add',
-      {
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Forbidden: Access denied. Contact support if you believe this is an error.',
-        life: 3000,
-      },
+        'add',
+        {
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Forbidden: Access denied. Contact support if you believe this is an error.',
+          life: 3000,
+        },
     )
   })
 
@@ -52,13 +52,13 @@ describe('HTTPBaseService', () => {
 
     // Vérifier que `toast.add` a été appelé avec les bons paramètres
     expect(toastEmitSpy).toHaveBeenCalledWith(
-      'add',
-      {
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Not Found: The resource you are looking for might have been removed or is temporarily unavailable.',
-        life: 3000,
-      },
+        'add',
+        {
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Not Found: The resource you are looking for might have been removed or is temporarily unavailable.',
+          life: 3000,
+        },
     )
   })
 
@@ -70,13 +70,13 @@ describe('HTTPBaseService', () => {
 
     // Vérifier que `toast.add` a été appelé avec les bons paramètres
     expect(toastEmitSpy).toHaveBeenCalledWith(
-      'add',
-      {
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Internal Server Error: Our servers are experiencing issues. Please try again later.',
-        life: 3000,
-      },
+        'add',
+        {
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Internal Server Error: Our servers are experiencing issues. Please try again later.',
+          life: 3000,
+        },
     )
   })
 
@@ -89,16 +89,15 @@ describe('HTTPBaseService', () => {
 
     // Vérifier que `toast.add` a été appelé avec les bons paramètres
     expect(toastEmitSpy).toHaveBeenCalledWith(
-      'add',
-      { severity: 'error', summary: 'Error', detail: 'An unexpected error occurred. Please try again.', life: 3000 },
+        'add',
+        {severity: 'error', summary: 'Error', detail: 'An unexpected error occurred. Please try again.', life: 3000},
     )
   })
 
   it('should handle a 422 Error response and throw exception', async () => {
     try {
       await apiClient.post('/test-error-422')
-    }
-    catch (error: any) {
+    } catch (error: any) {
       // Vérifier que le statut de l'erreur est 422
       expect(error.response.status).toBe(422)
 

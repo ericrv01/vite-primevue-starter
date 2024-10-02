@@ -6,12 +6,10 @@ export const mockServer = setupServer(...handlers)
 
 /* AutomationStatus */
 export function setupGetAllowedAutomation() {
-  console.log('Modify mockserver : setupGetAllowedAutomation')
   mockServer.use(...getAutomationStatusHandler(true))
 }
 
 export function setupGetNotAllowedAutomation() {
-  console.log('Modify mockserver : setupGetNotAllowedAutomation')
   mockServer.use(...getAutomationStatusHandler(false))
 }
 

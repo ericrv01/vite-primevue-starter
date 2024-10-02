@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import type { PropType } from 'vue'
+import {onBeforeMount, onUnmounted, ref} from 'vue'
+import type {PropType} from 'vue'
 import StartStopButton from './StartStopButton.vue'
 import AutomationStatusService from '@/services/AutomationStatusService'
-import type { AutomationStatus } from '@/interfaces/AutomationStatus'
+import type {AutomationStatus} from '@/interfaces/AutomationStatus'
 
 const props = defineProps({
   isAllowed: {
@@ -19,8 +19,7 @@ async function fetchAutomationStatus() {
   try {
     const status: AutomationStatus = await AutomationStatusService.getAutomationStatus()
     isRunning.value = status.isAllowed
-  }
-  catch (error) {
+  } catch (error) {
     console.error('Failed to fetch automation status:', error)
   }
 }
@@ -31,17 +30,16 @@ async function toggleAutomationStatus() {
     return
   }
   try {
-    const newStatus: AutomationStatus = { isAllowed: !isRunning.value }
+    const newStatus: AutomationStatus = {isAllowed: !isRunning.value}
     const updatedStatus: AutomationStatus = await AutomationStatusService.changeAutomationStatus(newStatus)
     isRunning.value = updatedStatus.isAllowed
-  }
-  catch (error) {
+  } catch (error) {
     console.error('Failed to change automation status:', error)
   }
 }
 
-onMounted(() => {
-  fetchAutomationStatus()
+onBeforeMount(async () => {
+  await fetchAutomationStatus()
   intervalId = window.setInterval(fetchAutomationStatus, 1000)
 })
 
@@ -53,7 +51,7 @@ onUnmounted(() => {
 
 <template>
   <div>
-    <StartStopButton :is-running="isRunning" :is-allowed="props.isAllowed" @status-changed="toggleAutomationStatus" />
+    <StartStopButton :is-running="isRunning" :is-allowed="props.isAllowed" @status-changed="toggleAutomationStatus"/>
   </div>
 </template>
 

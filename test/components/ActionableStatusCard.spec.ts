@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, screen, setup } from '@test/utils'
-import ActionableStatus from '@/components/ActionableStatusCard.vue'
+import {beforeEach, describe, expect, it, screen, setup} from '../utils'
+import ActionableStatus from '../../src/components/ActionableStatusCard.vue'
 
 describe('ActionableStatus', () => {
   beforeEach(() => {
@@ -69,7 +69,7 @@ describe('Etat du switch selon la propriété', () => {
   })
 
   it('change status to ON on click if activable', async () => {
-    const { user } = setup(ActionableStatus, {
+    const {user} = setup(ActionableStatus, {
       renderOptions: {
         props: {
           status: false,
@@ -86,7 +86,7 @@ describe('Etat du switch selon la propriété', () => {
   })
 
   it('change status to OFF on click if activable', async () => {
-    const { user } = setup(ActionableStatus, {
+    const {user} = setup(ActionableStatus, {
       renderOptions: {
         props: {
           status: true,
@@ -103,7 +103,7 @@ describe('Etat du switch selon la propriété', () => {
   })
 
   it('dont change status to ON on click if not activable', async () => {
-    const { user } = setup(ActionableStatus, {
+    const {user} = setup(ActionableStatus, {
       renderOptions: {
         props: {
           status: false,
@@ -120,7 +120,7 @@ describe('Etat du switch selon la propriété', () => {
   })
 
   it('dont change status to OFF on click if not activable', async () => {
-    const { user } = setup(ActionableStatus, {
+    const {user} = setup(ActionableStatus, {
       renderOptions: {
         props: {
           status: true,

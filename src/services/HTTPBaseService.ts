@@ -1,12 +1,12 @@
 import axios from 'axios'
-import type { AxiosInstance } from 'axios'
-import { consola } from 'consola'
-// import { useToast } from 'primevue/usetoast'
+import type {AxiosInstance} from 'axios'
+import {consola} from 'consola'
 import * as toast from '@/composables/toast'
 
 // Create Axios instance
 const apiClient: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/api/v1/',
+  // baseURL: 'http://localhost:3000/api/v1/',
+  baseURL: '',
   timeout: 25000,
   headers: {
     'Content-type': 'application/json',
@@ -70,27 +70,26 @@ function showToastError(detail: string) {
 
 // Response interceptor
 apiClient.interceptors.response.use(
-  response => response,
-  (error) => {
-    consola.error('Response error:', error)
+    response => response,
+    (error) => {
+      consola.error('Response error:', error)
 
-    // Si l'erreur contient une réponse HTTP
-    if (error.response) {
-      const { status } = error.response
+      // Si l'erreur contient une réponse HTTP
+      if (error.response) {
+        const {status} = error.response
 
-      // Si le statut est 422, rejeter l'erreur pour une gestion au niveau du composant
-      if (status === 422)
-        return Promise.reject(error)
+        // Si le statut est 422, rejeter l'erreur pour une gestion au niveau du composant
+        if (status === 422)
+          return Promise.reject(error)
 
-      // Afficher un toast d'erreur avec les informations pertinentes
-      const errorMessage = errorMessages[status as keyof typeof errorMessages] || 'An unexpected error occurred. Please try again.'
-      showToastError(errorMessage)
-    }
-    else {
-      // Si l'erreur ne contient pas de réponse HTTP (par ex. : problème de réseau)
-      showToastError('Network Error')
-    }
-  },
+        // Afficher un toast d'erreur avec les informations pertinentes
+        const errorMessage = errorMessages[status as keyof typeof errorMessages] || 'An unexpected error occurred. Please try again.'
+        showToastError(errorMessage)
+      } else {
+        // Si l'erreur ne contient pas de réponse HTTP (par ex. : problème de réseau)
+        showToastError('Network Error')
+      }
+    },
 )
 
 export default apiClient

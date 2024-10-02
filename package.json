@@ -19,7 +19,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "2.8.3",
     "@cypress/vite-dev-server": "^5.2.0",
-    "@iconify/json": "^2.2.253",
+    "@iconify/json": "^2.2.255",
     "@intlify/unplugin-vue-i18n": "^3.0.1",
     "@sfxcode/formkit-primevue": "^1.11.3",
     "@testing-library/dom": "^10.4.0",
@@ -70,7 +70,7 @@
     "prism-theme-vars": "^0.2.5",
     "quill": "^1.3.7",
     "rxjs": "^7.8.1",
-    "sass": "^1.79.3",
+    "sass": "^1.79.4",
     "tslib": "^2.7.0",
     "typescript": "^5.6.2",
     "unocss": "^0.58.9",

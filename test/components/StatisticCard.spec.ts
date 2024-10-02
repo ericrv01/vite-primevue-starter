@@ -1,5 +1,5 @@
-import { expect, it, screen, setup } from '@test/utils'
-import StatisticCard from '@/components/StatisticCard.vue'
+import {expect, it, screen, setup} from '../utils'
+import StatisticCard from '../../src/components/StatisticCard.vue'
 
 it('should mount the component', () => {
   setup(StatisticCard, {

@@ -1,24 +1,22 @@
-import type { AxiosResponse } from 'axios'
+import type {AxiosResponse} from 'axios'
 import apiClient from './HTTPBaseService'
-import type { AutomationStatus } from '@/interfaces/AutomationStatus'
-import { API_PATHS } from '@/constants/apiURLs'
+import type {AutomationStatus} from '@/interfaces/AutomationStatus'
+import {API_PATHS} from '@/constants/apiURLs'
 
 class AutomationStatusService {
   async getAutomationStatus(): Promise<AutomationStatus> {
-    const { data }: AxiosResponse<AutomationStatus> = await apiClient.get(
-      API_PATHS.AUTOMATION_STATUS,
+    const {data}: AxiosResponse<AutomationStatus> = await apiClient.get(
+        API_PATHS.AUTOMATION_STATUS,
     )
-    console.log('Appel API')
-    console.log(data)
     return data
   }
 
   async changeAutomationStatus(
-    input: AutomationStatus,
+      input: AutomationStatus,
   ): Promise<AutomationStatus> {
-    const { data }: AxiosResponse<AutomationStatus> = await apiClient.put(
-      API_PATHS.AUTOMATION_STATUS,
-      input,
+    const {data}: AxiosResponse<AutomationStatus> = await apiClient.put(
+        API_PATHS.AUTOMATION_STATUS,
+        input,
     )
     return data
   }

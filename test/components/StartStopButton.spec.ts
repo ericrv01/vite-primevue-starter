@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, it, screen, setup } from '@test/utils'
-import StartStopButton from '@/components/StartStopButton.vue'
+import {beforeEach, describe, expect, it, screen, setup} from '../utils'
+import StartStopButton from '../../src/components/StartStopButton.vue'
 
 describe('StartStopButton', () => {
   beforeEach(() => {
@@ -57,7 +57,7 @@ describe('Button behavior', () => {
   })
 
   it('does not toggle status on click if not allowed', async () => {
-    const { user } = setup(StartStopButton, {
+    const {user} = setup(StartStopButton, {
       renderOptions: {
         props: {
           isRunning: false,
